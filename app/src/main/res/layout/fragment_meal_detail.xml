@@ -53,6 +53,7 @@
             android:layout_marginTop="16dp"
             android:text='@{@string/price + ": " + meal.getPrice() + " " + @string/currency}'
 
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -114,6 +115,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
                 tools:layout_editor_absoluteX="229dp"
                 tools:layout_editor_absoluteY="623dp" />
 

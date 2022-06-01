@@ -41,9 +41,16 @@ class CartAdapter(var mContext: Context,
 
         t.cardView.animation = AnimationUtils.loadAnimation(mContext, com.airbnb.lottie.R.anim.abc_grow_fade_in_from_bottom)
 
-        t.textViewTotalPrice.text = (meal.meal_price * meal.meal_order_count.toInt()).toString()
+        t.textViewTotalPrice.text = (meal.meal_price * meal.meal_order_count.toInt()).toString() + " " + mContext.getString(R.string.currency)
 
+        /*
         t.imageViewDelete.setOnClickListener {
+            viewModel.deleteMealInCart(meal)
+        }
+
+         */
+
+        t.cardViewDelete.setOnClickListener {
             viewModel.deleteMealInCart(meal)
         }
 
