@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/homePageFragment">
+
+    <fragment
+        android:id="@+id/homePageFragment"
+        android:name="com.example.omersplace.fragments.HomePageFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_home_page">
+        <action
+            android:id="@+id/action_homePageFragment_to_mealDetailFragment"
+            app:destination="@id/mealDetailFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/homePageFragment"
+            app:popUpToInclusive="false" />
+        <argument
+            android:name="meal"
+            app:argType="com.example.omersplace.entities.Meal" />
+    </fragment>
+    <fragment
+        android:id="@+id/mealDetailFragment"
+        android:name="com.example.omersplace.fragments.MealDetailFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_meal_detail">
+        <argument
+            android:name="meal"
+            app:argType="com.example.omersplace.entities.Meal" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.example.omersplace.fragments.CartFragment"
+        android:label="@string/menu_my_cart"
+        tools:layout="@layout/fragment_cart" />
+    <fragment
+        android:id="@+id/moreOptionsFragment"
+        android:name="com.example.omersplace.fragments.MoreOptionsFragment"
+        android:label="@string/menu_more"
+        tools:layout="@layout/fragment_more_options" />
+</navigation>
