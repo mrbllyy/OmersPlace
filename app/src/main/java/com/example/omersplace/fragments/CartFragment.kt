@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.omersplace.R
 import com.example.omersplace.adapters.CartAdapter
 import com.example.omersplace.databinding.FragmentCartBinding
 import com.example.omersplace.entities.MealInCart
@@ -29,6 +30,8 @@ class CartFragment : Fragment() {
             val adapter = CartAdapter(requireContext(), it, viewModel)
             binding.adapter = adapter
 
+            binding.textViewCartPriceTotal.text = getString(R.string.total_cost) + " " + calculateTotalPriceOfCart().toString() + " " + getString(R.string.currency)
+
             checkVisibility()
         }
 
@@ -42,13 +45,12 @@ class CartFragment : Fragment() {
         val tempViewModel: CartViewModel by viewModels()
         viewModel = tempViewModel
 
-
     }
 
     override fun onResume() {
         super.onResume()
 
-        viewModel.loadOrderList("OmersPlace")
+        viewModel.loadOrderList()
     }
 
 
@@ -56,10 +58,20 @@ class CartFragment : Fragment() {
         if (viewModel.cartList.value.isNullOrEmpty()) {
             binding.lottieAnimation.visibility = View.VISIBLE
             binding.textViewNoItemWarning.visibility = View.VISIBLE
+            binding.linearLayoutCart.visibility = View.INVISIBLE
         } else {
             binding.lottieAnimation.visibility = View.INVISIBLE
             binding.textViewNoItemWarning.visibility = View.INVISIBLE
+            binding.linearLayoutCart.visibility = View.VISIBLE
         }
+    }
+
+    fun calculateTotalPriceOfCart(): Double {
+        var totalPrice = 0.0
+        for(mealInCart in viewModel.cartList.value!!) {
+            totalPrice += mealInCart.meal_order_count.toInt() * mealInCart.meal_price
+        }
+        return totalPrice
     }
 
 }

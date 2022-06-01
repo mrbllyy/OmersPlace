@@ -19,13 +19,14 @@ class CartViewModel: ViewModel() {
         cartList = mrepo.cartList
     }
 
-    fun loadOrderList(username: String) {
-        mrepo.ordersInCart(username)
+    fun loadOrderList() {
+        mrepo.ordersInCart()
     }
 
     fun deleteMealInCart(mealInCart: MealInCart) {
         mrepo.deleteMealInCart(mealInCart)
-
+        //Do not run loadOrderList after deleteMealInCart in mrepo because deletion will be going async
+        //loadOrderList(username)
     }
 
 }

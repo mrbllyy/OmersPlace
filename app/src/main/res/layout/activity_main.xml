@@ -35,14 +35,14 @@
         android:layout_height="wrap_content"
         android:background="@color/omers_darkred"
         android:minHeight="?attr/actionBarSize"
-        android:padding="10dp"
+        android:padding="4dp"
         android:theme="?attr/actionBarTheme"
         app:buttonGravity="center_vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:logo="@drawable/ic_notification"
+        app:logo="@android:mipmap/sym_def_app_icon"
         app:title="@string/app_name"
-        app:titleMarginStart="25dp"
+        app:titleMarginStart="30dp"
         app:titleTextColor="@color/black" />
 </androidx.constraintlayout.widget.ConstraintLayout>

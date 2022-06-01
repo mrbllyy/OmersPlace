@@ -5,6 +5,7 @@
 
     <data>
         <variable name="meal" type="com.example.omersplace.entities.Meal" />
+        <import type="com.example.omersplace.R"></import>
     </data>
 
     <LinearLayout
@@ -57,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="64dp"
                     android:fontFamily="@font/odibee_sans"
-                    android:text='@{"Price: " + meal.getPrice() + " ₺"}'
+                    android:text='@{"Price: " + meal.getPrice() + " " + @string/currency}'
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

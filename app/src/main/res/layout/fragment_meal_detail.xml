@@ -38,7 +38,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
-            android:fontFamily="@font/eb_garamond"
             android:padding="16dp"
             android:text="@string/lorem_ipsum"
             android:textStyle="italic"
@@ -47,58 +46,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewDescription" />
 
-        <Button
-            android:id="@+id/buttonAddToCart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="@color/omers_darkred"
-            android:text="@string/add_to_cart"
-            app:layout_constraintBottom_toBottomOf="@+id/imageViewAdd"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageViewAdd"
-            app:rippleColor="@color/omers_orange" />
-
-        <ImageView
-            android:id="@+id/imageViewRemove"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:src="@drawable/ic_baseline_remove_circle_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textViewNumberOfItems"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/textViewNumberOfItems"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:text="0"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageViewAdd"
-            app:layout_constraintStart_toEndOf="@+id/imageViewRemove" />
-
-        <ImageView
-            android:id="@+id/imageViewAdd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="16dp"
-            android:src="@drawable/ic_baseline_add_circle_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textViewNumberOfItems" />
-
         <TextView
             android:id="@+id/textViewPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/eb_garamond"
-            android:text='@{meal.getPrice() + " ₺"}'
-            android:textSize="24sp"
+            android:text='@{@string/price + ": " + meal.getPrice() + " " + @string/currency}'
+
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -112,38 +66,67 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:background="#FFFFFF"
-            android:fontFamily="@font/eb_garamond"
             android:padding="8dp"
             android:text="@string/description"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardViewMealDetailImage" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="16dp"
-            android:text="@string/total_cost"
+            android:background="@color/omers_orange"
+            android:elevation="50dp"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textViewTotalCost" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
-            android:id="@+id/textViewTotalCost"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/textView"
-            app:layout_constraintEnd_toStartOf="@+id/buttonAddToCart"
-            app:layout_constraintHorizontal_bias="0.762"
-            app:layout_constraintStart_toEndOf="@+id/imageViewAdd"
-            app:layout_constraintTop_toTopOf="@+id/textView" />
+            <ImageView
+                android:id="@+id/imageViewRemove"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_remove_circle_24"
+                tools:layout_editor_absoluteX="32dp"
+                tools:layout_editor_absoluteY="618dp" />
 
-        <androidx.constraintlayout.widget.Group
-            android:id="@+id/group"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:constraint_referenced_ids="textViewNumberOfItems,imageViewRemove,imageViewAdd,buttonAddToCart,textViewTotalCost,textView" />
+            <TextView
+                android:id="@+id/textViewNumberOfItems"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="0"
+                tools:layout_editor_absoluteX="72dp"
+                tools:layout_editor_absoluteY="619dp" />
+
+            <ImageView
+                android:id="@+id/imageViewAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_add_circle_24"
+                tools:layout_editor_absoluteX="96dp"
+                tools:layout_editor_absoluteY="618dp" />
+
+            <TextView
+                android:id="@+id/textViewTotalCost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                tools:layout_editor_absoluteX="229dp"
+                tools:layout_editor_absoluteY="623dp" />
+
+            <Button
+                android:id="@+id/buttonAddToCart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/omers_darkred"
+                android:text="@string/add_to_cart"
+                app:rippleColor="@color/omers_orange"
+                tools:layout_editor_absoluteX="263dp"
+                tools:layout_editor_absoluteY="607dp" />
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

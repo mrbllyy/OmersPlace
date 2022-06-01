@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavArgs
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.omersplace.R
 import com.example.omersplace.databinding.FragmentMealDetailBinding
@@ -33,13 +34,13 @@ class MealDetailFragment : Fragment() {
 
         binding.imageViewAdd.setOnClickListener {
             binding.textViewNumberOfItems.text = (getCountofItems() + 1).toString()
-            binding.textViewTotalCost.text = (getCountofItems() * meal.meal_price).toString()
+            binding.textViewTotalCost.text = getString(R.string.total_cost) + " " + (getCountofItems() * meal.meal_price).toString() + " " + getString(R.string.currency)
         }
 
         binding.imageViewRemove.setOnClickListener {
             if(binding.textViewNumberOfItems.text.toString().toInt() > 0) {
                 binding.textViewNumberOfItems.text = (getCountofItems() - 1).toString()
-                binding.textViewTotalCost.text = (getCountofItems() * meal.meal_price).toString()
+                binding.textViewTotalCost.text = getString(R.string.total_cost) + " " + (getCountofItems() * meal.meal_price).toString() + " " + getString(R.string.currency)
             }
         }
 
@@ -57,9 +58,10 @@ class MealDetailFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
+        //setHasOptionsMenu(true)
         val tempViewModel: MealDetailViewModel by viewModels()
         viewModel = tempViewModel
+
     }
 
     fun getCountofItems(): Int {

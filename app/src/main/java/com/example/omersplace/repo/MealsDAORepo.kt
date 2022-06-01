@@ -18,6 +18,8 @@ class MealsDAORepo {
     var cartList: MutableLiveData<List<MealInCart>>
     var mealDAO: MealsDAO
 
+    val username = "OmersPlace"
+
 
     init {
         mealList = MutableLiveData()
@@ -48,7 +50,6 @@ class MealsDAORepo {
     //sepeteYemekEkle.php
     fun addToCart(meal: Meal, count: Int){
         //username will be OmersPlace
-        val username = "OmersPlace"
 
         mealDAO.addToCart(meal.meal_name, meal.meal_image, meal.meal_price.toInt(), count, username).enqueue(object: Callback<CRUDResponse> {
 
@@ -57,7 +58,7 @@ class MealsDAORepo {
                 val msg = response?.body()?.message
                 Log.e("addToCart", "$success - $msg - $meal")
 
-                ordersInCart(username)
+                ordersInCart()
             }
 
             override fun onFailure(call: Call<CRUDResponse>?, t: Throwable?) {
@@ -68,10 +69,7 @@ class MealsDAORepo {
 
     //sepeteYemekEkle.php
     fun addToCartAfterDelete(meal: Meal, count: Int){
-        //username will be OmersPlace
-        val username = "OmersPlace"
-
-        //getAllMeals first to check returned list from service
+        //bringOrdersInCart first to check returned list from service
         var newCount = count
 
         mealDAO.bringOrdersInCart(username).enqueue(object: Callback<CartResponse> {
@@ -96,7 +94,7 @@ class MealsDAORepo {
                                     val success = response?.body()?.success
                                     val msg = response?.body()?.message
 
-                                    //then add count of m to count to add to cart again
+                                    //then add count of m to newCount to add to cart again
                                     addToCart(meal, newCount)
 
                                     Log.e("deleteMealInCart", "$success - $msg")
@@ -135,19 +133,17 @@ class MealsDAORepo {
     }
 
     //sepettekiYemekleriGetir.php
-    fun ordersInCart(username: String){
-        //username will be OmersPlace
-
+    fun ordersInCart(){
         mealDAO.bringOrdersInCart(username).enqueue(object: Callback<CartResponse> {
 
             override fun onResponse(call: Call<CartResponse>?, response: Response<CartResponse>?) {
                 val success = response?.body()?.success
                 val msg = response?.body()?.cartList
 
-                val liste = response?.body()?.cartList
+                val list = response?.body()?.cartList
 
-                if (cartList.value != liste) {
-                    cartList.value = liste
+                if (cartList.value != list) {
+                    cartList.value = list
                 }
 
                 Log.e("ordersInCart", "$success - $msg")
@@ -161,9 +157,6 @@ class MealsDAORepo {
                 //set cartlist as empty
                 cartList.value = ArrayList<MealInCart>()
 
-
-
-
             }
 
         })
@@ -172,17 +165,15 @@ class MealsDAORepo {
 
     //sepettenYemekSil.php
     fun deleteMealInCart(mealInCart: MealInCart){
-        //username will be OmersPlace
-        val username = "OmersPlace"
 
         mealDAO.deleteMealInCart(mealInCart.meal_cart_id, username).enqueue(object: Callback<CRUDResponse>{
             override fun onResponse(call: Call<CRUDResponse>?, response: Response<CRUDResponse>?) {
                 val success = response?.body()?.success
                 val msg = response?.body()?.message
 
-                ordersInCart(username)
+                ordersInCart()
 
-                Log.e("deleteMealInCart", "$success - $msg")
+                Log.e("deleteMealInCart", "$success - $msg - $mealInCart")
             }
 
             override fun onFailure(call: Call<CRUDResponse>?, t: Throwable?) {

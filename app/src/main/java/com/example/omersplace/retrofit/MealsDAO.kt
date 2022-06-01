@@ -11,10 +11,8 @@ import retrofit2.http.POST
 
 interface MealsDAO {
 
-
     @GET("tumYemekleriGetir.php")
     fun getAllMeals(): Call<MealResponse>
-
 
     @POST("sepeteYemekEkle.php")
     @FormUrlEncoded
@@ -24,11 +22,9 @@ interface MealsDAO {
                   @Field("yemek_siparis_adet") meal_order_count: Int,
                   @Field("kullanici_adi") username: String): Call<CRUDResponse>
 
-
     @POST("sepettekiYemekleriGetir.php")
     @FormUrlEncoded
     fun bringOrdersInCart(@Field("kullanici_adi") username: String): Call<CartResponse>
-
 
     @POST("sepettenYemekSil.php")
     @FormUrlEncoded

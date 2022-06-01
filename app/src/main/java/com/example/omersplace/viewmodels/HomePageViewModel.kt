@@ -1,6 +1,7 @@
 package com.example.omersplace.viewmodels
 
 import android.app.AlertDialog
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -27,17 +28,24 @@ class HomePageViewModel: ViewModel() {
     }
 
     fun loadOrderList(username: String) {
-        mrepo.ordersInCart(username)
+        mrepo.ordersInCart()
     }
 
+    fun sortByDescending() {
+        var t = ArrayList<Meal>()
+        //mealList.value = mealList.value?.sortedBy { }
+        var i = mealList.value?.size!! - 1
 
+        while (i >= 0) {
+            Log.e("sortByDescending", i.toString())
+            t.add(mealList.value!![i])
+            Log.e("sortByDescending", mealList.value!![i].toString())
+            i--
+        }
 
-    /*
-    fun ara(aramaKelimesi:String){
-        krepo.kisiAra(aramaKelimesi)
+        //mealList.value = t
+        mealList.value = mealList?.value!!.reversed()
+
     }
 
-    fun sil(kisi_id:Int){
-        krepo.kisiSil(kisi_id)
-    }*/
 }

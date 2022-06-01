@@ -16,9 +16,7 @@
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/fade_out"
-            app:popUpTo="@id/homePageFragment"
-            app:popUpToInclusive="false" />
+            app:popExitAnim="@android:anim/fade_out" />
         <argument
             android:name="meal"
             app:argType="com.example.omersplace.entities.Meal" />
@@ -31,6 +29,9 @@
         <argument
             android:name="meal"
             app:argType="com.example.omersplace.entities.Meal" />
+        <action
+            android:id="@+id/action_mealDetailFragment_to_homePageFragment"
+            app:destination="@id/homePageFragment" />
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
