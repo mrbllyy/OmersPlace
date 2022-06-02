@@ -32,20 +32,15 @@ class HomePageViewModel: ViewModel() {
     }
 
     fun sortByDescending() {
-        var t = ArrayList<Meal>()
-        //mealList.value = mealList.value?.sortedBy { }
-        var i = mealList.value?.size!! - 1
+       this.mealList.value = mealList.value!!.sortedWith(compareBy({it.meal_price})).reversed()
+    }
 
-        while (i >= 0) {
-            Log.e("sortByDescending", i.toString())
-            t.add(mealList.value!![i])
-            Log.e("sortByDescending", mealList.value!![i].toString())
-            i--
-        }
+    fun sortByAscending() {
+        this.mealList.value = mealList.value!!.sortedWith(compareBy({it.meal_price}))
+    }
 
-        //mealList.value = t
-        mealList.value = mealList?.value!!.reversed()
-
+    fun sortByTitle() {
+        this.mealList.value = mealList.value!!.sortedWith(compareBy({it.meal_name}))
     }
 
 }
