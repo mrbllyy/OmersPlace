@@ -43,8 +43,8 @@ class HomePageFragment : Fragment() {
 
         binding.textViewDescending.setOnClickListener {
             Log.e("HomePageFragment", "Descending")
-            //viewModel.sortByDescending()
-            viewModel.mealList.value = viewModel.mealList.value!!.sortedWith(compareBy({it.meal_price}))
+            viewModel.sortByDescending()
+            //viewModel.mealList.value = viewModel.mealList.value!!.sortedWith(compareBy({it.meal_price}))
         }
 
 

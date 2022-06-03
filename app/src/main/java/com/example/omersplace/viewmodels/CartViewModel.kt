@@ -8,8 +8,6 @@ import com.example.omersplace.repo.MealsDAORepo
 class CartViewModel: ViewModel() {
 
     val mrepo = MealsDAORepo()
-
-
     var cartList: MutableLiveData<List<MealInCart>>
 
     val username = "OmersPlace"

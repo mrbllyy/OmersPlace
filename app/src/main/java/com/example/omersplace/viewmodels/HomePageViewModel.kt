@@ -32,15 +32,15 @@ class HomePageViewModel: ViewModel() {
     }
 
     fun sortByDescending() {
-       this.mealList.value = mealList.value!!.sortedWith(compareBy({it.meal_price})).reversed()
+       this.mealList.value = mealList.value!!.sortedWith(compareBy { it.meal_price }).reversed()
     }
 
     fun sortByAscending() {
-        this.mealList.value = mealList.value!!.sortedWith(compareBy({it.meal_price}))
+        this.mealList.value = mealList.value!!.sortedWith(compareBy { it.meal_price })
     }
 
     fun sortByTitle() {
-        this.mealList.value = mealList.value!!.sortedWith(compareBy({it.meal_name}))
+        this.mealList.value = mealList.value!!.sortedWith(compareBy { it.meal_name })
     }
 
 }

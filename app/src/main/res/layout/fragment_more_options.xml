@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/omers_yellow"
+    android:background="@color/omers_gray"
     tools:context=".fragments.MoreOptionsFragment">
 
     <ScrollView
@@ -21,6 +21,8 @@
                 android:id="@+id/textViewMyOrders"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@color/omers_green"
                 android:padding="10dp"
                 android:text="@string/more_my_orders" />
 
@@ -28,6 +30,8 @@
                 android:id="@+id/textViewChangePassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@color/omers_green"
                 android:padding="10dp"
                 android:text="@string/more_change_password" />
 
@@ -35,6 +39,8 @@
                 android:id="@+id/textViewAccountSettings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@color/omers_green"
                 android:padding="10dp"
                 android:text="@string/more_account" />
 
@@ -42,6 +48,8 @@
                 android:id="@+id/textViewLogout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@color/omers_green"
                 android:padding="10dp"
                 android:text="@string/more_logout" />
 

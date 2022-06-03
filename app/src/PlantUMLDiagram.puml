@@ -1,0 +1,138 @@
+@startuml
+
+class CartViewModel {
+    val mrepo = MealsDAORepo()
+    var cartList: MutableLiveData<List<MealInCart>>
+    val username = "OmersPlace"
+
+    fun loadOrderList()
+    fun deleteMealInCart(mealInCart: MealInCart)
+
+}
+
+class HomePageViewModel{
+var mealList: MutableLiveData<List<Meal>>
+    var mrepo = MealsDAORepo()
+    fun loadMeals()
+    fun addToCart(meal: Meal, count: Int)
+    fun loadOrderList(username: String)
+    fun sortByDescending()
+    fun sortByAscending()
+    fun sortByTitle()
+}
+
+class MealDetailViewModel {
+    fun addToCart(meal: Meal, count: Int)
+    val mrepo = MealsDAORepo()
+}
+
+class CartFragment {
+    private lateinit var binding: FragmentCartBinding
+    private lateinit var viewModel: CartViewModel
+    override fun onCreateView(): View?
+    override fun onCreate()
+    override fun onResume()
+    fun checkVisibility()
+    fun calculateTotalPriceOfCart(): Double
+}
+
+class HomePageFragment {
+    private lateinit var binding: FragmentHomePageBinding
+    private lateinit var viewModel: HomePageViewModel
+    override fun onCreateView(): View?
+    override fun onCreate()
+}
+
+class MealDetailFragment {
+    private lateinit var binding: FragmentMealDetailBinding
+    private lateinit var viewModel: MealDetailViewModel
+    override fun onCreateView(): View?
+    override fun onCreate()
+    fun getCountofItems(): Int
+}
+
+class Meal {
+
+    var meal_id: Int
+    var meal_name: String
+    var meal_image: String
+    var meal_price: Double
+
+    fun getPrice(): String
+}
+
+class MealInCart {
+    var meal_cart_id: Int
+    var meal_name: String
+    var meal_image: String
+    var meal_price: Double
+    var meal_order_count: String
+    var username: String
+
+    fun getPrice(): String
+}
+
+class MealsDAORepo {
+    var mealList: MutableLiveData<List<Meal>>
+    var cartList: MutableLiveData<List<MealInCart>>
+    var mealDAO: MealsDAO
+
+    val username = "OmersPlace"
+
+
+    fun getAllMeals()
+    fun addToCart(meal: Meal, count: Int)
+    fun addToCartAfterDelete(meal: Meal, count: Int)
+    fun ordersInCart()
+    fun deleteMealInCart(mealInCart: MealInCart)
+}
+
+interface MealsDAO {
+
+    @GET("tumYemekleriGetir.php")
+    fun getAllMeals(): Call<MealResponse>
+
+    @POST("sepeteYemekEkle.php")
+    fun addToCart(): Call<CRUDResponse>
+
+    @POST("sepettekiYemekleriGetir.php")
+    fun bringOrdersInCart(): Call<CartResponse>
+
+    @POST("sepettenYemekSil.php")
+    fun deleteMealInCart(): Call<CRUDResponse>
+}
+
+class CartAdapter {
+    var mContext: Context
+    var orderList: List<MealInCart>
+    var viewModel: CartViewModel
+
+    override fun onCreateViewHolder()
+    override fun onBindViewHolder()
+    override fun getItemCount()
+}
+
+class MealAdapter {
+    var mContext: Context
+    var mealList: List<Meal>
+    var viewModel: HomePageViewModel
+
+    override fun onCreateViewHolder()
+    override fun onBindViewHolder()
+    override fun getItemCount()
+}
+
+CartFragment --> CartViewModel
+HomePageFragment --> HomePageViewModel
+MealDetailFragment --> MealDetailViewModel
+
+HomePageViewModel --> MealsDAORepo
+CartViewModel --> MealsDAORepo
+MealDetailViewModel --> MealsDAORepo
+
+MealsDAORepo --> MealsDAO
+
+CartAdapter --> CartViewModel
+MealAdapter --> HomePageViewModel
+
+@enduml

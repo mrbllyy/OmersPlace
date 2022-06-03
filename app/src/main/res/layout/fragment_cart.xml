@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/omers_yellow"
+        android:background="@color/omers_gray"
         tools:context=".fragments.CartFragment">
 
         <com.airbnb.lottie.LottieAnimationView
@@ -34,6 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:text="@string/no_item_in_cart"
+            android:textSize="16sp"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

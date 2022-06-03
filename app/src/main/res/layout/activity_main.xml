@@ -33,7 +33,7 @@
         android:id="@+id/toolbarMain"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/omers_darkred"
+        android:background="@color/omers_orange"
         android:minHeight="?attr/actionBarSize"
         android:padding="4dp"
         android:theme="?attr/actionBarTheme"

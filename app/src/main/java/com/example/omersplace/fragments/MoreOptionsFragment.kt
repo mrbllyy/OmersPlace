@@ -15,8 +15,6 @@ class MoreOptionsFragment : Fragment() {
     private lateinit var binding: FragmentMoreOptionsBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentMoreOptionsBinding.inflate(inflater, container, false)
-
-
         return binding.root
     }
 
