@@ -21,9 +21,11 @@ class HomePageFragment : Fragment() {
     private lateinit var viewModel: HomePageViewModel
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home_page, container, false)
-        binding.rv.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
         viewModel.mealList.observe(viewLifecycleOwner){
+
+            binding.rv.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+
             val adapter = MealAdapter(requireContext(), it, viewModel)
             binding.mealAdapter = adapter
 

@@ -25,9 +25,10 @@ class CartFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_cart, container, false)
-        binding.rv.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
 
         viewModel.cartList.observe(viewLifecycleOwner){
+
+            binding.rv.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
             val adapter = CartAdapter(requireContext(), it, viewModel)
             binding.adapter = adapter
 
