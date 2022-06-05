@@ -10,21 +10,15 @@ xmlns:tools="http://schemas.android.com/tools">
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:id="@+id/motionLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_height="100dp"
         app:layoutDescription="@xml/mealincart_card_xml_constraintlayout_scene">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="10dp"
-            app:cardUseCompatPadding="true"
-            app:contentPaddingBottom="10dp"
-            app:contentPaddingLeft="10dp"
-            app:contentPaddingRight="10dp"
-            app:contentPaddingTop="10dp"
+            app:cardUseCompatPadding="false"
+            app:contentPadding="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -53,7 +47,6 @@ xmlns:tools="http://schemas.android.com/tools">
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
-                    android:fontFamily="@font/eb_garamond"
                     android:text="@{order.meal_name}"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -63,7 +56,6 @@ xmlns:tools="http://schemas.android.com/tools">
                     android:id="@+id/textViewMealPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/odibee_sans"
                     android:text='@{order.getPrice() + " " + @string/currency}'
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -96,16 +88,38 @@ xmlns:tools="http://schemas.android.com/tools">
             android:id="@+id/cardViewDelete"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            app:cardBackgroundColor="@color/omers_red"
-            app:cardCornerRadius="10dp"
+            app:cardBackgroundColor="@color/omers_darkred"
             app:layout_constraintStart_toEndOf="@+id/cardView">
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:contentDescription="@string/app_name"
-                app:srcCompat="@drawable/ic_baseline_delete_outline_24" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="16dp"
+                    android:contentDescription="@string/app_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_baseline_delete_outline_24" />
+
+                <TextView
+                    android:id="@+id/textViewDelete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="@string/delete"
+                    android:textAlignment="center"
+                    android:textColor="@color/omers_gray"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>

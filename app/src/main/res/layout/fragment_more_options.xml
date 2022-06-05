@@ -22,7 +22,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@color/omers_green"
                 android:padding="10dp"
                 android:text="@string/more_my_orders" />
 
@@ -31,7 +30,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@color/omers_green"
                 android:padding="10dp"
                 android:text="@string/more_change_password" />
 
@@ -40,7 +38,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@color/omers_green"
                 android:padding="10dp"
                 android:text="@string/more_account" />
 
@@ -49,7 +46,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@color/omers_green"
                 android:padding="10dp"
                 android:text="@string/more_logout" />
 

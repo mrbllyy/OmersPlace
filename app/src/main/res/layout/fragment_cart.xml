@@ -73,7 +73,6 @@
                 android:layout_weight="1"
                 android:text="@string/price"
                 android:textAlignment="center"
-                android:textColor="#5D4037"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -82,8 +81,7 @@
                 android:layout_width="10dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/order_now"
-                android:textColor="#FBC02D" />
+                android:text="@string/order_now" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

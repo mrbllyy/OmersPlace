@@ -23,7 +23,7 @@
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/omers_green"
+        android:background="@color/omers_yellow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,17 +32,15 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarMain"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:background="@color/omers_orange"
         android:minHeight="?attr/actionBarSize"
-        android:padding="4dp"
         android:theme="?attr/actionBarTheme"
         app:buttonGravity="center_vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:logo="@android:mipmap/sym_def_app_icon"
+        app:logo="@mipmap/ic_launcher_foreground"
         app:title="@string/app_name"
-        app:titleMarginStart="30dp"
         app:titleTextColor="@color/black" />
 </androidx.constraintlayout.widget.ConstraintLayout>
